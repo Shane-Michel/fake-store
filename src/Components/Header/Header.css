@@ -1,0 +1,9 @@
+:root {
+    --blue: #3A4895;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
