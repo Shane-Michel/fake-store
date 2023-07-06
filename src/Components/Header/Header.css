@@ -1,9 +1,37 @@
 :root {
-    --blue: #3A4895;
+    --logoBlue: #3A4895;
+    --red: #F90505;
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 32px;
 }
+
+.cart-container {
+    position: relative;
+}
+
+.cart-icon {
+    color: var(--logoBlue);
+    width: 70px;
+    height: 30px;
+}
+  
+.itemsInCart {
+    position: absolute;
+    top: 29px;
+    right: 57px;
+    background-color: var(--red);
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    font-size: 12px;
+    width: 17.69px;
+    height: 16px;
+    text-align: center;
+    line-height: 14.52px;
+}
+  

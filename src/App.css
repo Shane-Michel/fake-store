@@ -1,5 +1,21 @@
+:root {
+  --bgWhite: #FAFAFA;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('Inter-3.19/Inter Hinted for Windows/Web/Inter-Regular.woff2') format('woff2'),
+       url('Inter-3.19/Inter Hinted for Windows/Web/Inter-Regular.woff') format('woff');
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Inter';
+}
+
+body {
+  background-color: var(--bgWhite);
 }
