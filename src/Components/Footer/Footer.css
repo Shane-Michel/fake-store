@@ -1,0 +1,12 @@
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--logoBlue);
+}
+
+.footer-container p, .footer-container a {
+    color: var(--bgWhite);
+    font-size: 0.75rem;
+}

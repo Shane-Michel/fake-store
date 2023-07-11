@@ -7,7 +7,7 @@ function Header() {
 
   return (
     <div className='header-container'>
-        <img src='/fake-store-logo.png' alt="logo" />
+        <img src='src/assets/fake-store-logo.png' alt="logo" />
         <div>
         <BsCart3 className='cart-icon'/>
         <p className='itemsInCart'>1</p>
