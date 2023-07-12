@@ -1,28 +1,33 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './Homepage.css'
+import ItemCard from '../../Components/ItemCard/ItemCard';
+import CategoryBtn from '../../Components/CategoryBtn/CategoryBtn';
+import axios from 'axios';
 
 function Homepage() {
+
+  // Show all items when page loads.
+
+  // create state to use all items.
+  const[items, setItems] = useState([]);
+  useEffect (
+    () => {
+      axios.get(`https://fakestoreapi.com/products`)
+      .then(res => {
+        setItems(res.data);
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
+    }, [] 
+  )
+
   return (
     <div className='homepage-container'>
       <div className='btns-container'>
-        <button>All</button>
-        <button>Electronics</button>
-        <button>Jewelry</button>
-        <button>Men's Clothing</button>
-        <button>Women's Clothing</button>
+        <button className='allBtn'>All</button>
+        <CategoryBtn />
       </div>
-      <div className='items-container'>
-        <div className='item-card'>
-          <div className='image-container'>
-          {/* <img className='item-img' src="" alt="item" /> */}
-          </div>
-          <div className='item-info-container'>
-            <p className='item-title'>title</p>
-            <p className='item-cat'>cat</p>
-          </div>
-          <p className='item-price'>price</p>
-        </div>
-      </div>
+      <ItemCard />
     </div>
   )
 }

@@ -1,0 +1,46 @@
+.items-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.item-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: var(--white);
+    width: 11.4375rem;
+    height: 15.5rem;
+    padding: 0 1rem;
+    text-align: left;
+}
+
+.image-container {
+    width: 9.4375rem;
+    height: 9.5625rem;
+    border: 1px solid var(--cardBorderGray);
+}
+
+.item-info-container {
+    text-align: left;
+}
+
+.item-title {
+    color: var(--titleGray);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.item-cat {
+    color: var(--catGray);
+    font-size: 0.625rem;
+}
+
+.item-price {
+    color: var(--titleGray);
+    font-size: 0.75rem;
+    font-weight: 600;
+}

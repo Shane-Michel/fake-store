@@ -1,10 +1,4 @@
-.homepage-container {
-    margin: 0 7rem;
-    padding: 0;
-    height: 100vh;
-}
-
-.btns-container button {
+.catBtn-container button {
     color: var(--searchBlue);
     border: none;
     background-color: var(--bgWhite);
