@@ -4,6 +4,7 @@
     align-items: center;
     padding: 2rem;
     background-color: var(--logoBlue);
+    margin-top: 1rem;
 }
 
 .footer-container p, .footer-container a {

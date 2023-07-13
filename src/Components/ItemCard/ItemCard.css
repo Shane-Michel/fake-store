@@ -1,12 +1,5 @@
-.items-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
-
 .item-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -15,13 +8,35 @@
     width: 11.4375rem;
     height: 15.5rem;
     padding: 0 1rem;
+    margin: 0.5rem;
     text-align: left;
 }
 
+.likeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1.375rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.5625rem;
+    height: 1.5625rem;
+    background-color: var(--cardBorderGray);
+    border-radius: 50%;
+}
+
 .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 9.4375rem;
     height: 9.5625rem;
     border: 1px solid var(--cardBorderGray);
+}
+
+.image-container img {
+    width: 6rem;
+    height: 6rem;
 }
 
 .item-info-container {

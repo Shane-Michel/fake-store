@@ -1,7 +1,11 @@
 .homepage-container {
     margin: 0 7rem;
     padding: 0;
-    height: 100vh;
+    /* height: 100vh; */
+}
+
+.btns-container {
+    display: flex;
 }
 
 .btns-container button {
@@ -10,4 +14,12 @@
     background-color: var(--bgWhite);
     font-size: 1.25rem;
     margin-right: 2rem;
+}
+
+.items-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 }

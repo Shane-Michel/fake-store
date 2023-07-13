@@ -1,13 +1,13 @@
 import React from 'react'
 import './CategoryBtn.css'
 
-function CategoryBtn() {
+function CategoryBtn({item}) {
     // I need the category buttons to appear when the catagory data is grabbed.
-  const getCatBtnInfo = () => {};
+    
 
   return (
     <div className='catBtn-container'>
-        <button className='catBtn'></button>
+        <button className='catBtn'>{item?.category}</button>
     </div>
   )
 }

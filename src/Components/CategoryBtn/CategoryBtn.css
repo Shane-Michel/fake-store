@@ -1,3 +1,7 @@
+.catBtn-container {
+    display: flex;
+}
+
 .catBtn-container button {
     color: var(--searchBlue);
     border: none;
