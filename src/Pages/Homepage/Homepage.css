@@ -6,6 +6,7 @@
 
 .btns-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .btns-container button {

@@ -1,5 +1,6 @@
 .catBtn-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .catBtn-container button {
