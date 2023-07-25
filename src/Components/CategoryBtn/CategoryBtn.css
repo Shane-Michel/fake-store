@@ -10,3 +10,10 @@
     font-size: 1.25rem;
     margin-right: 2rem;
 }
+
+@media only screen and (max-width: 770px) {
+    .catBtn-container button {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+}

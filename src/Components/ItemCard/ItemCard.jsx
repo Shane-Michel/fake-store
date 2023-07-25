@@ -1,7 +1,10 @@
 import React from 'react'
 import './ItemCard.css'
+import { Link } from 'react-router-dom'
+
 
 function ItemCard({product}) {
+
 
   return (
     <div className='item-card'>
@@ -9,13 +12,13 @@ function ItemCard({product}) {
         <img src="src/assets/heart.png" alt="" />
       </div>
       <div className='image-container'>
-      <img className='item-img' src={product?.image} alt="item" />
+      <Link to={`/details/${product?.id}`}><img className='item-img' src={product?.image} alt="item" /></Link>
       </div>
       <div className='item-info-container'>
         <p className='item-title'>{product?.title}</p>
         <p className='item-cat'>{product?.category}</p>
       </div>
-      <p className='item-price'>{product?.price}</p>
+      <p className='item-price'>${product?.price}</p>
     </div>
   )
 }

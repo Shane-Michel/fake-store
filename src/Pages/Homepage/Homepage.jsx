@@ -28,7 +28,6 @@ function Homepage() {
       .then(res => {
         // store the api data
         setProducts(res.data);
-        console.log(res.data);
       })
       .catch(err => console.log(err))
 
@@ -55,7 +54,7 @@ function Homepage() {
         </div>
       </div>
       <div className='items-container'>
-        {products.map(product => <ItemCard key={product.id} product={product} />)}
+        {products.map(product => <ItemCard key={product?.id} product={product} />)}
       </div>
     </div>
   )
