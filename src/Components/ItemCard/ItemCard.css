@@ -59,3 +59,7 @@
     font-size: 0.75rem;
     font-weight: 600;
 }
+
+.heart-icon {
+    color: var(--logoBlue);
+}

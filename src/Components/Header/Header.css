@@ -5,7 +5,7 @@
     margin: 2rem;
 }
 
-.cart-container {
+.cartImage-container {
     position: relative;
 }
 
@@ -15,10 +15,10 @@
     height: 30px;
 }
   
-.itemsInCart {
+.numItemsInCart {
     position: absolute;
-    top: 29px;
-    right: 57px;
+    top: 0;
+    right: 25px;
     background-color: var(--red);
     color: white;
     font-weight: 700;

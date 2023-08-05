@@ -8,9 +8,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     background-color: var(--white);
     width: 45rem;
-    height: 30rem;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
 }
 
 .product-image {
@@ -51,4 +53,10 @@
     width: 9.75rem;
     height: 2.5625rem;
     border: none;
+}
+
+@media only screen and (max-width: 430px) {
+    .product-image {
+        margin-bottom: 1rem;
+    }
 }

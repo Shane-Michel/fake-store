@@ -19,7 +19,6 @@ function Homepage() {
       .then(res => {
         // store the api data
         setCategories(res.data);
-        console.log(res.data);
       })
       .catch(err => console.log(err))
 
@@ -40,7 +39,6 @@ function Homepage() {
     axios.get(`https://fakestoreapi.com/products`)
       .then(res => {
         setProducts(res.data);
-        console.log(res.data);
       })
       .catch(err => console.log(err))
   }
@@ -49,9 +47,7 @@ function Homepage() {
     <div className='homepage-container'>
       <div className='btns-container'>
         <button className='allBtn' onClick={handleAllBtn}>All</button>
-        <div className='catBtn-container'>
         {categories.map(category => <CategoryBtn key={category} category={category} setProducts={setProducts}/>)}
-        </div>
       </div>
       <div className='items-container'>
         {products.map(product => <ItemCard key={product?.id} product={product} />)}

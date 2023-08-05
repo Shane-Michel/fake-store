@@ -6,6 +6,8 @@
 
 .btns-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -33,5 +35,12 @@
     .btns-container button {
         font-size: 1rem;
         margin: 0 1rem 0 2rem;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+
+    .allBtn {
+        margin: 0;
     }
 }
