@@ -5,6 +5,7 @@ import axios from 'axios';
 import { CartContext } from '../../Context/CartContext';
 import { BsArrowLeft, BsCheckCircle } from 'react-icons/bs';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { StorefrontDataContext } from '../../Context/StorefrontDataContext';
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -13,23 +14,52 @@ function ProductDetails() {
   const [error, setError] = useState('');
 
   const { items, addItems, removeItems } = useContext(CartContext);
+  const { getProductById } = useContext(StorefrontDataContext);
 
   useEffect(() => {
+    const cachedProduct = getProductById(productId);
+    if (!cachedProduct) {
+      return;
+    }
+
+    setProductDetail(cachedProduct);
+    setError('');
+    setLoading(false);
+  }, [getProductById, productId]);
+
+  useEffect(() => {
+    const cachedProduct = getProductById(productId);
+    if (cachedProduct) {
+      return;
+    }
+
+    let ignore = false;
+
     async function fetchProduct() {
       setLoading(true);
       try {
         const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
-        setProductDetail(response.data);
-        setError('');
+        if (!ignore) {
+          setProductDetail(response.data);
+          setError('');
+        }
       } catch (err) {
-        setError('We couldn\'t load this product right now. Please try again shortly.');
+        if (!ignore) {
+          setError('We couldn\'t load this product right now. Please try again shortly.');
+        }
       } finally {
-        setLoading(false);
+        if (!ignore) {
+          setLoading(false);
+        }
       }
     }
 
     fetchProduct();
-  }, [productId]);
+
+    return () => {
+      ignore = true;
+    };
+  }, [getProductById, productId]);
 
   const isInCart = useMemo(
     () => Boolean(items.find((item) => String(item.id) === String(productId))),
