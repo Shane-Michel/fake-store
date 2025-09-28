@@ -1,45 +1,27 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import './Homepage.css';
 import ItemCard from '../../Components/ItemCard/ItemCard';
 import CategoryBtn from '../../Components/CategoryBtn/CategoryBtn';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BsArrowUpRight } from 'react-icons/bs';
 import { FiSearch, FiTruck, FiShield, FiRefreshCw } from 'react-icons/fi';
+import { StorefrontDataContext } from '../../Context/StorefrontDataContext';
 
 function Homepage() {
-  const [allProducts, setAllProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const {
+    products: allProducts = [],
+    categories: storefrontCategories = [],
+    loading: storefrontLoading,
+    error: storefrontError,
+  } = useContext(StorefrontDataContext);
+
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    async function fetchStorefrontData() {
-      setLoading(true);
-      try {
-        const [categoriesResponse, productsResponse] = await Promise.all([
-          axios.get('https://fakestoreapi.com/products/categories'),
-          axios.get('https://fakestoreapi.com/products'),
-        ]);
-
-        setCategories(categoriesResponse.data);
-        setAllProducts(productsResponse.data);
-      } catch (err) {
-        setError('We were unable to reach the store right now. Please refresh to try again.');
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchStorefrontData();
-  }, []);
 
   useEffect(() => {
     if (!allProducts.length) {
-      setProducts([]);
+      setFilteredProducts([]);
       return;
     }
 
@@ -52,7 +34,7 @@ function Homepage() {
       filtered = filtered.filter((product) => product.title.toLowerCase().includes(query));
     }
 
-    setProducts(filtered);
+    setFilteredProducts(filtered);
   }, [allProducts, activeCategory, searchTerm]);
 
   const heroHighlight = useMemo(() => {
@@ -205,7 +187,7 @@ function Homepage() {
           </div>
 
           <div className="category-pills">
-            {[ 'all', ...categories ].map((category) => (
+            {[ 'all', ...(storefrontCategories || []) ].map((category) => (
               <CategoryBtn
                 key={category}
                 category={category}
@@ -230,10 +212,10 @@ function Homepage() {
             </Link>
           </div>
 
-          {error && <div className="error-banner">{error}</div>}
+          {storefrontError && <div className="error-banner">{storefrontError}</div>}
 
           <div className="product-grid">
-            {loading && (
+            {storefrontLoading && (
               Array.from({ length: 8 }).map((_, index) => (
                 <div className="product-skeleton" key={index}>
                   <div className="skeleton-img" />
@@ -243,14 +225,14 @@ function Homepage() {
               ))
             )}
 
-            {!loading && products.length > 0 && (
-              products.map((product) => (
+            {!storefrontLoading && filteredProducts.length > 0 && (
+              filteredProducts.map((product) => (
                 <ItemCard key={product?.id} product={product} />
               ))
             )}
           </div>
 
-          {!loading && products.length === 0 && !error && (
+          {!storefrontLoading && filteredProducts.length === 0 && !storefrontError && (
             <div className="empty-state">
               <h3>No matches yet</h3>
               <p>
