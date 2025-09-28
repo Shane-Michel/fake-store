@@ -1,25 +1,35 @@
-.catBtn-container {
-    display: flex;
-    flex-wrap: wrap;
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition), color var(--transition);
+  cursor: pointer;
 }
 
-.catBtn-container button {
-    color: var(--searchBlue);
-    border: none;
-    background-color: var(--bgWhite);
-    font-size: 1.25rem;
-    margin-right: 2rem;
+.category-pill:hover {
+  color: var(--text-primary);
+  border-color: rgba(108, 92, 231, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(20, 19, 34, 0.08);
 }
 
-@media only screen and (max-width: 770px) {
-    .catBtn-container button {
-        font-size: 1rem;
-        margin-right: 1rem;
-    }
+.category-pill.active {
+  background: rgba(108, 92, 231, 0.1);
+  border-color: transparent;
+  color: var(--accent);
+  box-shadow: 0 12px 24px rgba(108, 92, 231, 0.24);
 }
 
-@media only screen and (max-width: 430px) {
-    .catBtn-container button {
-        margin: 0.25rem;
-    }
+@media (max-width: 640px) {
+  .category-pill {
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem;
+  }
 }

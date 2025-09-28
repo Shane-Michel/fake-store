@@ -1,37 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 :root {
-  --bgWhite: #FAFAFA;
-  --logoBlue: #3A4895;
-  --red: #F90505;
-  --searchBlue: #5264C3;
-  --titleBlk: #282828;
-  --catGray: #949494;
-  --cardBorderGray: #EFEFEF;
-  --cardElipseGray: #E7E7E7;
-  --white: #FFFFFF;
-  --formGray: #B4B4B4;
-  --addCartYellow: #FFD814;
-  --cartBorder: #D9D9D9;
+  --bg-surface: #f6f7fb;
+  --bg-elevated: #ffffff;
+  --bg-hero: linear-gradient(135deg, #f0f4ff 0%, #fef6ff 60%, #ffffff 100%);
+  --text-primary: #141322;
+  --text-secondary: #4a5165;
+  --text-muted: #6b7280;
+  --accent: #6c5ce7;
+  --accent-strong: #4c3bcf;
+  --accent-soft: #ebe9ff;
+  --success: #16a34a;
+  --danger: #e23f5a;
+  --stroke: #e5e7eb;
+  --shadow-soft: 0 20px 45px rgba(20, 19, 34, 0.08);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --transition: 200ms ease;
 }
-
-@font-face {
-  font-family: 'Inter';
-  src: url('Inter-3.19/Inter Hinted for Windows/Web/Inter-Regular.woff2') format('woff2'),
-       url('Inter-3.19/Inter Hinted for Windows/Web/Inter-Regular.woff') format('woff');
-}
-
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter';
-  font-size: 16px;
-}
-
-a {
-  text-decoration: none;
 }
 
 body {
-  background-color: var(--bgWhite);
+  min-height: 100vh;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+section {
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.5rem, 8vw, 5rem);
+}
+
+.container {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.tagline {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  box-shadow: 0 15px 30px rgba(108, 92, 231, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--accent-strong);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-soft);
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.btn-secondary:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+}
+
+.section-heading p {
+  color: var(--text-secondary);
+  max-width: 550px;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 3rem 1rem;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--stroke);
+}
+
+@media (max-width: 720px) {
+  section {
+    padding-inline: clamp(1rem, 6vw, 3rem);
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
