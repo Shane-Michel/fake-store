@@ -7,12 +7,14 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import ProductDetails from './Pages/ProductDetails/ProductDetails';
 import CartContextProvider from './Context/CartContext';
 import Checkout from './Pages/Checkout/Checkout';
+import ScrollToTop from './Components/ScrollToTop';
 
 function App() {
 
   return (
     <BrowserRouter>
       <CartContextProvider>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path='/' element={<Homepage />}/>
