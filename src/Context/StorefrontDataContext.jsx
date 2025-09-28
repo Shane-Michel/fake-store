@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 
 export const StorefrontDataContext = createContext({
@@ -15,14 +15,16 @@ function StorefrontDataProvider({ children }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+  const hasLoadedOnceRef = useRef(false);
+  const inFlightRequestRef = useRef(false);
 
   const loadData = useCallback(async () => {
     // Avoid firing duplicate requests if one is already in flight
-    if (loading) {
+    if (inFlightRequestRef.current) {
       return;
     }
 
+    inFlightRequestRef.current = true;
     setLoading(true);
     try {
       const [categoriesResponse, productsResponse] = await Promise.all([
@@ -35,14 +37,15 @@ function StorefrontDataProvider({ children }) {
       setError('');
     } catch (err) {
       // Only surface the error to consumers if this is the initial fetch.
-      if (!hasLoadedOnce) {
+      if (!hasLoadedOnceRef.current) {
         setError('We were unable to reach the store right now. Please refresh to try again.');
       }
     } finally {
-      setHasLoadedOnce(true);
+      hasLoadedOnceRef.current = true;
       setLoading(false);
+      inFlightRequestRef.current = false;
     }
-  }, [hasLoadedOnce, loading]);
+  }, []);
 
   useEffect(() => {
     loadData();
